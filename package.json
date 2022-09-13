@@ -1,0 +1,45 @@
+{
+  "name": "desafio",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:front": "parcel ./client/index.html",
+    "build:front": "parcel build ./client/index.html",
+    "dev:back": "ts-node ./server/views/index.ts",
+    "build:back": "tsc",
+    "build": "npm run build:front && npm run build:back",
+    "start": "node ./server-dist/views/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "@vaadin/router": "^1.7.4",
+    "algoliasearch": "^4.14.2",
+    "bulma": "^0.9.4",
+    "cloudinary": "^1.31.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "dropzone": "^6.0.0-beta.2",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mapbox": "^1.0.0-beta10",
+    "mapbox-gl": "^2.10.0",
+    "parcel": "^2.7.0",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "radash": "^7.1.0",
+    "sequelize": "^6.21.4",
+    "typescript": "^4.8.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.17",
+    "buffer": "^6.0.3",
+    "os-browserify": "^0.3.0",
+    "process": "^0.11.10",
+    "querystring-es3": "^0.2.1",
+    "url": "^0.11.0"
+  }
+}
