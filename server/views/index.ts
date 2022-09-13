@@ -6,7 +6,7 @@ dotenv.config();
 import { auth, user, pets } from './end-points';
 
 const APP = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT;
 APP.use(express.json());
 APP.use(cors());
 

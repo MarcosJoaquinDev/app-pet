@@ -1,6 +1,5 @@
-const BASE_URL = 'https://dwf-m7-postgre-prueba.herokuapp.com';
 const sendInitialDataForRegistration = async (email: string) => {
-	const response = await fetch(BASE_URL + '/auth-email', {
+	const response = await fetch('/auth-email', {
 		method: 'POST',
 		body: JSON.stringify({ email }),
 		headers: {
@@ -16,7 +15,7 @@ const authorizationUpdate = async (
 	email,
 	password
 ) => {
-	const response = await fetch(BASE_URL + '/auth', {
+	const response = await fetch('/auth', {
 		method: 'POST',
 		body: JSON.stringify({ name, last_name, user_name, email, password }),
 		headers: {
@@ -27,7 +26,7 @@ const authorizationUpdate = async (
 };
 const getToken = async (email: string, password: string) => {
 	try {
-		const response = await fetch(BASE_URL + '/auth/token', {
+		const response = await fetch('/auth/token', {
 			method: 'POST',
 			body: JSON.stringify({ email, password }),
 			headers: {
@@ -42,7 +41,7 @@ const getToken = async (email: string, password: string) => {
 };
 const getMyInformation = async (token) => {
 	try {
-		const resp = await fetch(BASE_URL + '/me', {
+		const resp = await fetch('/me', {
 			method: 'GET',
 			headers: { Authorization: `bearer ${token}` },
 		});
@@ -54,7 +53,7 @@ const getMyInformation = async (token) => {
 };
 const getTheCurrentDataOfMyPets = async (token) => {
 	try {
-		const resp = await fetch(BASE_URL + '/me/pets', {
+		const resp = await fetch('/me/pets', {
 			method: 'GET',
 			headers: { Authorization: `bearer ${token}` },
 		});
@@ -68,7 +67,7 @@ const pushPetInDataBase = async (token: string, data) => {
 	const { name, type, race, url_picture, description, location, lat, lng } =
 		data;
 	try {
-		const resp = await fetch(BASE_URL + '/me/pet', {
+		const resp = await fetch('/me/pet', {
 			method: 'POST',
 			body: JSON.stringify({
 				name,
@@ -92,7 +91,7 @@ const pushPetInDataBase = async (token: string, data) => {
 	}
 };
 const updateChangesPet = async (infoPet, petId: number, token: string) => {
-	const response = await fetch(BASE_URL + `/me/pet/${petId}`, {
+	const response = await fetch(`/me/pet/${petId}`, {
 		method: 'PUT',
 		body: JSON.stringify(infoPet),
 		headers: {
@@ -103,7 +102,7 @@ const updateChangesPet = async (infoPet, petId: number, token: string) => {
 	return response;
 };
 const deleteAPetInTheDataBase = async (petId: number, token: string) => {
-	const response = await fetch(BASE_URL + `/me/pet/${petId}`, {
+	const response = await fetch(`/me/pet/${petId}`, {
 		method: 'DELETE',
 		headers: {
 			Authorization: `bearer ${token}`,
@@ -114,7 +113,7 @@ const deleteAPetInTheDataBase = async (petId: number, token: string) => {
 };
 const getAllPetsNearMe = async (lat, lng) => {
 	try {
-		const resp = await fetch(BASE_URL + `/pets?lat=${lat}&lng=${lng}`, {
+		const resp = await fetch(`/pets?lat=${lat}&lng=${lng}`, {
 			method: 'GET',
 		});
 		const pets = await resp.json();
@@ -130,7 +129,7 @@ const sendInformationToOwner = async (
 	description: string
 ) => {
 	try {
-		const response = await fetch(BASE_URL + '/send-mail', {
+		const response = await fetch('/send-mail', {
 			method: 'POST',
 			body: JSON.stringify({ idPet, name, phone, description }),
 			headers: {
