@@ -31,7 +31,14 @@ export function initPetsNearMe() {
 					<section class='container-pets'>
 						<div class='pets'>
 						${this.pets.map((pet) => {
-							return `<x-pet-card petId='${pet.id}' name='${pet.name}' location='${pet.location}' description='${pet.description}' url='${pet.url_picture}'></x-pet-card>`;
+							return `<x-pet-card
+								petId='${pet.id}'
+								name='${pet.name}'
+								location='${pet.location}'
+								description='${pet.description}'
+								url='${pet.url_picture}'
+								date='${pet.createdAt}'>
+								</x-pet-card>`;
 						})}
 						</div>
 					</section>

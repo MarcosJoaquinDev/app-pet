@@ -10,6 +10,7 @@ export function initCardPet() {
 			location: string;
 			description: string;
 			url: string;
+			date;
 			shadow = this.attachShadow({ mode: 'open' });
 			constructor() {
 				super();
@@ -74,6 +75,13 @@ export function initCardPet() {
 				this.location = this.getAttribute('location') as string;
 				this.description = this.getAttribute('description') as string;
 				this.url = this.getAttribute('url') as string;
+				let date = new Date(this.getAttribute('date') as string);
+				this.date = date.toLocaleDateString(undefined, {
+					weekday: 'long',
+					year: 'numeric',
+					month: 'long',
+					day: 'numeric',
+				});
 
 				this.shadow.innerHTML = `
 				<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -102,7 +110,7 @@ export function initCardPet() {
 								<br>
 								<a href='/' class='info-report'> <spam class='info-link'></spam> <i class="fa-regular fa-pen-to-square"></i></a>
 								<br>
-								<time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+								<time datetime="2016-1-1">${this.date}</time>
 								</div>
 					</div>
 				</div>

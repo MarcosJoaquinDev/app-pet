@@ -1,5 +1,3 @@
-const iconPet = require('url:./icons/pet-logo.png');
-import { Router } from '@vaadin/router';
 export function initMyHomePage() {
 	customElements.define(
 		'x-my-home',

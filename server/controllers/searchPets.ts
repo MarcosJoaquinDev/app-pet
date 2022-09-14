@@ -4,7 +4,7 @@ const findPetsNearMe = async (lat: number, lng: number) => {
 	const cords = `${lat},${lng}`;
 	const response: any = await index.search('', {
 		aroundLatLng: cords,
-		aroundRadius: 10000,
+		aroundRadius: 2000,
 	});
 	let hits = [];
 	for (const hit of response.hits) {

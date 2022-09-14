@@ -2,6 +2,7 @@ import * as mapboxgl from 'mapbox-gl';
 import { Dropzone } from 'dropzone';
 import { state } from '../../../state';
 import * as MapboxClient from 'mapbox';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MAPBOX_TOKEN = process.env.MAP_BOX_TOKEN;
 const mapClient = new MapboxClient(MAPBOX_TOKEN);

@@ -2,7 +2,8 @@ import { initHomePage } from './pages/home';
 import { initMyHomePage } from './pages/my-home';
 import { searchPetLocationsButton } from './components/search-button';
 import { outButton } from './components/button-out';
-import { initMyInformationPage } from './pages/my-data';
+import { initMyInformationPage } from './pages/forms/user-info/my-data';
+import { initEditMyInformationPage } from './pages/forms/user-info/edit-my-data';
 import { initSignInEmail } from './pages/forms/sign-in/email';
 import { initSignInPassword } from './pages/forms/sign-in/password';
 import { initSignUp } from './pages/forms/sign-up/sign-up';
@@ -19,6 +20,7 @@ function main() {
 	initHomePage();
 	initMyHomePage();
 	initMyInformationPage();
+	initEditMyInformationPage();
 	initCardPet();
 	initPetsNearMe();
 	initSignInEmail();

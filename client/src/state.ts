@@ -10,6 +10,7 @@ import {
 	deleteAPetInTheDataBase,
 	getAllPetsNearMe,
 	sendInformationToOwner,
+	changeMyInformation,
 } from './api-pets';
 
 const state = {
@@ -89,6 +90,11 @@ const state = {
 	async sendInfo(idPet, name, phone, description) {
 		const res = await sendInformationToOwner(idPet, name, phone, description);
 		return res;
+	},
+	async changesMydata(data) {
+		const token: string = sessionStorage.getItem('token') as string;
+		const put = await changeMyInformation(token, data);
+		return put;
 	},
 };
 export { state };

@@ -11,6 +11,7 @@ router.setRoutes([
 	{ path: '/sign-in-email', component: 'x-sign-in-email' },
 	{ path: '/sign-in-auth', component: 'x-sign-in-password' },
 	{ path: '/edit', component: 'x-edit-report' },
+	{ path: '/edit-my-info', component: 'x-edit-user-info' },
 	{ path: '/report', component: 'x-report-pet' },
 	{ path: '/my-pets', component: 'x-my-reports' },
 ]);

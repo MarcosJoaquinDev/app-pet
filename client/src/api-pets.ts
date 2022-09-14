@@ -51,6 +51,22 @@ const getMyInformation = async (token) => {
 		return 'Error en los Datos';
 	}
 };
+const changeMyInformation = async (token, changes) => {
+	try {
+		const resp = await fetch('/me', {
+			method: 'PUT',
+			body: JSON.stringify(changes),
+			headers: {
+				Authorization: `bearer ${token}`,
+				'content-type': 'application/json',
+			},
+		});
+		const user: Response = await resp.json();
+		return user;
+	} catch (err) {
+		return 'Error en los Datos';
+	}
+};
 const getTheCurrentDataOfMyPets = async (token) => {
 	try {
 		const resp = await fetch('/me/pets', {
@@ -153,4 +169,5 @@ export {
 	deleteAPetInTheDataBase,
 	getAllPetsNearMe,
 	sendInformationToOwner,
+	changeMyInformation,
 };
