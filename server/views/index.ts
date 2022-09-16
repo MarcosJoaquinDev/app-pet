@@ -4,6 +4,7 @@ import * as path from 'path';
 import * as dotenv from 'dotenv';
 dotenv.config();
 import { auth, user, pets } from './end-points';
+import { Auth } from '../models';
 
 const APP = express();
 const PORT = process.env.PORT;
@@ -20,6 +21,10 @@ APP.use(cors());
 	APP.use(auth);
 	APP.use(user);
 	APP.use(pets);
+	APP.get('/test', async (req, res) => {
+		const response = await Auth.findAll();
+		res.json(response);
+	});
 	const route = path.resolve(__dirname, '../../dist');
 	APP.use(express.static(route));
 	APP.get('*', (req, res) => {

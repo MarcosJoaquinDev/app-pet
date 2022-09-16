@@ -1,4 +1,4 @@
-import { Pet, User } from '../models/index';
+import { Auth, Pet, User } from '../models/index';
 import { sendgrid } from './lib/sendgrid';
 const userInfomation = async (userId) => {
 	const meInfo: any = await User.findByPk(userId);
@@ -11,7 +11,15 @@ const userInfomation = async (userId) => {
 	};
 	return response;
 };
-const changesInformation = async (userId: number, changes: object) => {
+const changesInformation = async (userId: number, changes) => {
+	if (changes.email) {
+		const authChange = {
+			email: changes.email,
+		};
+		await Auth.update(authChange, {
+			where: { userId },
+		});
+	}
 	const changePostgre = await User.update(changes, {
 		where: { id: userId },
 	});
