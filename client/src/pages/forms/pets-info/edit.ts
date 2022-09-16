@@ -137,13 +137,24 @@ export function initReportEditInfoPage() {
 			}
 			changeData() {
 				const inputs = this.shadow.querySelectorAll('.input');
+				const inputLocation = this.shadow.querySelector(
+					'.input-location'
+				) as Element;
+				const boxMapElement = this.shadow.querySelector('.box-map') as Element;
+				inputLocation.addEventListener('input', () => {
+					boxMapElement.setAttribute('class', 'box ubication box-map');
+				});
+
 				const buttonMap = this.shadow.querySelector('.btn-map') as Element;
 				buttonMap.addEventListener('click', (e) => {
 					e.preventDefault();
 					this.enabledReportButton();
 				});
 				for (const i of inputs) {
-					if (!i.className.includes('input-map')) {
+					if (
+						!i.className.includes('input-map') &&
+						!i.className.includes('input-location')
+					) {
 						i.addEventListener('input', () => {
 							this.enabledReportButton();
 						});
@@ -249,10 +260,10 @@ export function initReportEditInfoPage() {
 
 						<div class="field">
 							<label class='label'>Barrio o Lugar de referencia</label>
-							<input class="input is-info" type="text" name='location' placeholder='${pet.location}'/>
+							<input class="input is-info input-location" type="text" name='location' placeholder='${pet.location}'/>
 						</div>
 
-						<div class='box ubication'>
+						<div class='box ubication box-map none'>
 							<input class="input is-info input-map" type="text" placeholder='Cambiar tu ubicacion' />
 							<i class="fa-regular fa-pen-to-square"></i>
 							<div id="map" class='map is-info' style="width:100%"></div>
