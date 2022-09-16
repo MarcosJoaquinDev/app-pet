@@ -42,7 +42,11 @@ export function initCardPet() {
 					const phone = target.phone.value;
 					const description = target.description.value;
 					state.sendInfo(this.petId, name, phone, description).then((res) => {
-						Router.go('/');
+						if (sessionStorage.getItem('token')) {
+							Router.go('/home');
+						} else {
+							Router.go('/');
+						}
 					});
 				});
 			}
