@@ -66,12 +66,10 @@ const state = {
 	async publishedNewPet(petInfo) {
 		const token: string = sessionStorage.getItem('token') as string;
 		const response = await pushPetInDataBase(token, petInfo);
-		console.log(response);
 	},
 	async updateChangesPet(infoPet, idPet) {
 		const token: string = sessionStorage.getItem('token') as string;
 		const res = await updateChangesPet(infoPet, idPet, token);
-		console.log(res);
 		this.loadMyData();
 	},
 	async dropAPet(petFoundId) {

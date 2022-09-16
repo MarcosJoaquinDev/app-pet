@@ -121,6 +121,7 @@ export function initReportInfoPetPage() {
 				});
 				myDropzone.on('thumbnail', (file) => {
 					urlPicture = file.dataURL;
+					console.log(file.dataURL.length);
 					this.urlPicturePet = urlPicture;
 
 					const containerDropzone = this.shadow.querySelector(

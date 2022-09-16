@@ -13,6 +13,8 @@ function checkBody(body) {
 	return incomplete;
 }
 async function uploadTheURLToCloudinary(url: string) {
+	console.log(url.length);
+
 	try {
 		const respuesta = await cloudinary.uploader.upload(url, {
 			resource_type: 'image',

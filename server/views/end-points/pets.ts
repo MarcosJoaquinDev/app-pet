@@ -1,4 +1,5 @@
 import * as express from 'express';
+
 import { middelwareVerify } from './middleware-security';
 import {
 	findAllMyPets,
@@ -19,6 +20,7 @@ endPointPet.post('/me/pet', middelwareVerify, async (req, res) => {
 		res.json(err);
 	}
 });
+
 endPointPet.put('/me/pet/:id', middelwareVerify, async (req, res) => {
 	const petId = req.params.id;
 	try {

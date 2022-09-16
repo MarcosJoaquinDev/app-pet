@@ -60,7 +60,7 @@ export function initReportEditInfoPage() {
 					};
 					const fieldsWithChanges = this.filterFields(petInfo);
 					state.updateChangesPet(fieldsWithChanges, this.petID).then((res) => {
-						console.log(res);
+						console.log('ok');
 					});
 				});
 				const deleteReport = this.shadow.querySelector(
@@ -111,7 +111,6 @@ export function initReportEditInfoPage() {
 				myDropzone.on('thumbnail', (file) => {
 					this.enabledReportButton();
 					this.url_picture = file.dataURL;
-					console.log(urlPicture);
 
 					const containerDropzone = this.shadow.querySelector(
 						'.dropzone'
@@ -174,7 +173,6 @@ export function initReportEditInfoPage() {
 								language: 'es',
 							},
 							function (err, data, res) {
-								console.log(data);
 								if (!err) callback(data.features);
 							}
 						);
