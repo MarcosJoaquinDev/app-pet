@@ -4,7 +4,6 @@ import * as path from 'path';
 import * as dotenv from 'dotenv';
 dotenv.config();
 import { auth, user, pets } from './end-points';
-import { Auth } from '../models';
 
 const APP = express();
 const PORT = process.env.PORT;
