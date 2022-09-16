@@ -21,10 +21,7 @@ APP.use(cors());
 	APP.use(auth);
 	APP.use(user);
 	APP.use(pets);
-	APP.get('/test', async (req, res) => {
-		const response = await Auth.findAll();
-		res.json(response);
-	});
+
 	const route = path.resolve(__dirname, '../../dist');
 	APP.use(express.static(route));
 	APP.get('*', (req, res) => {
