@@ -22,7 +22,13 @@ export function initMyPetsPublishedPage() {
 								this.pets.length == 0
 									? `<p class='title is-3'>No se encontraron mascotas publicadas</p>`
 									: this.pets.map((pet: any) => {
-											return `<x-pet-card data=me url='${pet.url_picture}' petId=${pet.id} name='${pet.name}' location='${pet.location}' description='${pet.description}' ></x-pet-card>  `;
+											return `<x-pet-card data=me 
+											url='${pet.url_picture}'
+											petId=${pet.id}
+											name='${pet.name}'
+											location='${pet.location}'
+											description='${pet.description}'
+											date='${pet.createdAt}' ></x-pet-card>  `;
 									  })
 							}
 						</section>

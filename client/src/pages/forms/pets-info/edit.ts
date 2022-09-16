@@ -55,6 +55,7 @@ export function initReportEditInfoPage() {
 						race: target.race.value,
 						description: target.description.value,
 						url_picture: this.url_picture,
+						location: target.location.value,
 						lat: LAT,
 						lng: LNG,
 					};
@@ -250,7 +251,7 @@ export function initReportEditInfoPage() {
 							<label class='label'>Barrio o Lugar de referencia</label>
 							<input class="input is-info" type="text" name='location' placeholder='${pet.location}'/>
 						</div>
-						
+
 						<div class='box ubication'>
 							<input class="input is-info input-map" type="text" placeholder='Cambiar tu ubicacion' />
 							<i class="fa-regular fa-pen-to-square"></i>
