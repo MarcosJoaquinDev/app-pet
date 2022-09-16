@@ -9,6 +9,10 @@ const APP = express();
 const PORT = process.env.PORT;
 APP.use(express.json());
 APP.use(cors());
+APP.use(express.json({ limit: '50mb' }));
+APP.use(
+	express.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 })
+);
 
 (function () {
 	APP.listen(PORT, () => {
