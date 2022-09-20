@@ -4,6 +4,7 @@ import {
 	authorizationUpdate,
 	getToken,
 	getMyInformation,
+	chengesMyPassword,
 	getTheCurrentDataOfMyPets,
 	pushPetInDataBase,
 	updateChangesPet,
@@ -93,6 +94,13 @@ const state = {
 		const token: string = sessionStorage.getItem('token') as string;
 		const put = await changeMyInformation(token, data);
 		return put;
+	},
+	async changeMyPass(newPass) {
+		const token = sessionStorage.getItem('token') as string;
+		const respose = (await chengesMyPassword(token, newPass)) as any;
+		if (!respose.includes('Error')) {
+			Router.go('/home');
+		}
 	},
 };
 export { state };

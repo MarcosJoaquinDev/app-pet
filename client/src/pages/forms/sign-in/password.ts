@@ -21,8 +21,6 @@ export function initSignInPassword() {
 						this.email,
 						target.key.value
 					);
-					console.log(response);
-
 					if (response) {
 						state.loadMyData();
 					} else {

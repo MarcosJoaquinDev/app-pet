@@ -1,4 +1,8 @@
-import { enterDataForAuthorization, emailExist } from './authorization';
+import {
+	enterDataForAuthorization,
+	emailExist,
+	changePassword,
+} from './authorization';
 import { generateToken } from './authentication';
 import { findPetsNearMe, findAllMyPets } from './searchPets';
 import {
@@ -27,4 +31,5 @@ export {
 	emailExist,
 	deleteOnePet,
 	sendTheMessage,
+	changePassword,
 };

@@ -17,8 +17,6 @@ export function initSignInEmail() {
 					const target = e.target as any;
 					const email = target.email.value;
 					const fieldIsEmpty = email == '';
-
-					console.log(email, !fieldIsEmpty);
 					let messageEl = this.shadow.getElementById('msg-warning') as Element;
 					let inputEl = this.shadow.querySelector('.input') as Element;
 

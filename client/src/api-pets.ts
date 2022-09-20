@@ -67,6 +67,22 @@ const changeMyInformation = async (token, changes) => {
 		return 'Error en los Datos';
 	}
 };
+const chengesMyPassword = async (token: string, newpass) => {
+	try {
+		const resp = await fetch('/me/password', {
+			method: 'PUT',
+			body: JSON.stringify(newpass),
+			headers: {
+				Authorization: `bearer ${token}`,
+				'content-type': 'application/json',
+			},
+		});
+		const user: Response = await resp.json();
+		return user;
+	} catch (err) {
+		return 'Error en la Api';
+	}
+};
 const getTheCurrentDataOfMyPets = async (token) => {
 	try {
 		const resp = await fetch('/me/pets', {
@@ -158,11 +174,13 @@ const sendInformationToOwner = async (
 		return err;
 	}
 };
+
 export {
 	sendInitialDataForRegistration,
 	authorizationUpdate,
 	getToken,
 	getMyInformation,
+	chengesMyPassword,
 	getTheCurrentDataOfMyPets,
 	pushPetInDataBase,
 	updateChangesPet,

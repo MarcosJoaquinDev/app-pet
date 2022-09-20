@@ -48,4 +48,13 @@ const enterDataForAuthorization = async (body) => {
 		}
 	}
 };
-export { enterDataForAuthorization, emailExist };
+const changePassword = async (userId: number, newPassword: string) => {
+	const response = await Auth.update(
+		{ password: getSHA256ofJSON(newPassword) },
+		{
+			where: { userId },
+		}
+	);
+	return response;
+};
+export { enterDataForAuthorization, emailExist, changePassword };

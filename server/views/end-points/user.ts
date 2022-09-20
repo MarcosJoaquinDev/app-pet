@@ -3,6 +3,7 @@ import {
 	userInfomation,
 	changesInformation,
 	sendTheMessage,
+	changePassword,
 } from '../../controllers/index';
 import { middelwareVerify } from './middleware-security';
 
@@ -31,6 +32,15 @@ endPointUser.post('/send-mail', async (req, res) => {
 	const { idPet, name, phone, description } = req.body;
 	try {
 		const response = await sendTheMessage(idPet, name, phone, description);
+		res.json(response);
+	} catch (err) {
+		return err;
+	}
+});
+endPointUser.put('/me/password', middelwareVerify, async (req, res) => {
+	const userId = req._user.id;
+	try {
+		const response = await changePassword(userId, req.body.password);
 		res.json(response);
 	} catch (err) {
 		return err;

@@ -4,6 +4,7 @@ import { searchPetLocationsButton } from './components/search-button';
 import { outButton } from './components/button-out';
 import { initMyInformationPage } from './pages/forms/user-info/my-data';
 import { initEditMyInformationPage } from './pages/forms/user-info/edit-my-data';
+import { initFormSecurityData } from './pages/forms/user-info/pass-form';
 import { initSignInEmail } from './pages/forms/sign-in/email';
 import { initSignInPassword } from './pages/forms/sign-in/password';
 import { initSignUp } from './pages/forms/sign-up/sign-up';
@@ -33,5 +34,6 @@ function main() {
 	initHeaderComponent();
 	searchPetLocationsButton();
 	outButton();
+	initFormSecurityData();
 }
 main();

@@ -1,4 +1,4 @@
-import { isBuffer } from 'util';
+import { Router } from '@vaadin/router';
 import { state } from '../../../state';
 export function initEditMyInformationPage() {
 	customElements.define(
@@ -31,10 +31,15 @@ export function initEditMyInformationPage() {
 				});
 				for (const i of inputs) {
 					i.addEventListener('input', () => {
-						const button = this.shadow.querySelector('.button') as any;
+						const button = this.shadow.querySelector('.btn-changes') as any;
 						button.disabled = false;
 					});
 				}
+				const btnPassEl = this.shadow.querySelector('.btn-pass') as Element;
+				btnPassEl.addEventListener('click', (e) => {
+					e.preventDefault();
+					Router.go('/edit-my-info/verify');
+				});
 			}
 			checkFields(info) {
 				let incomplete = false;
@@ -79,7 +84,10 @@ export function initEditMyInformationPage() {
                 <spam>Email: </spam>
                 <input class="input is-primary" placeholder='${state.data.user.email}' name='email' />
               </h1>
-              <button class="button is-success" disabled>Guardar cambios</button>
+              <section class='container-btn'>
+                <button class="button is-success btn-changes" disabled>Guardar cambios</button>
+                <button class="button is-warning btn-pass" >Cambiar contraseña</button>
+              </section>
             </section>
           </form>
         </main>
@@ -117,6 +125,10 @@ export function initEditMyInformationPage() {
           .is-4{
             flex-direction:column;
           }
+        }
+        .container-btn{
+          display:flex;
+          justify-content:space-between;
         }
         `;
 				this.shadow.appendChild(styleEl);
