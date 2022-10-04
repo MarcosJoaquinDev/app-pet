@@ -1,6 +1,5 @@
 const iconPet = require('url:../../icons/pet-logo.png');
 import { state } from '../../../state';
-import { Router } from '@vaadin/router';
 export function initSignInPassword() {
 	customElements.define(
 		'x-sign-in-password',

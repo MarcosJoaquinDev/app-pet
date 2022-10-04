@@ -24,7 +24,6 @@ export function initSignInEmail() {
 						messageEl.innerHTML = 'Campo obligatorio';
 						messageEl.setAttribute('class', 'help is-danger');
 						inputEl.setAttribute('class', 'input is-danger');
-						console.log('campo vacio');
 					} else {
 						const checkEmail = await state.initAuthEmail(email);
 						if (checkEmail) {
