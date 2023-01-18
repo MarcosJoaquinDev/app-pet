@@ -1,4 +1,4 @@
-const PORT = 'https://app-pet.vercel.app/';
+const PORT = process.env.PORT;
 const sendInitialDataForRegistration = async (email: string) => {
 	const response = await fetch(PORT+'/auth-email', {
 		method: 'POST',
