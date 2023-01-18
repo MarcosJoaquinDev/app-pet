@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 
-const sequelize = new Sequelize('postgres://dwfjacdn:WH4x6YQEShRiPmLcAKjXpadhsc0csVPR@motty.db.elephantsql.com/dwfjacdn')
+const sequelize = new Sequelize(process.env.URL_DATA_BASE_ELEPHANT)
 /*
 const sequelize = new Sequelize({
 	dialect: 'postgres',
