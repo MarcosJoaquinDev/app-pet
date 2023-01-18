@@ -46,7 +46,7 @@ const state = {
 	},
 	async loadMyToken(email: string, psw: string) {
 		const response = await getToken(email, psw);
-
+		
 		if (response.token) {
 			sessionStorage.setItem('token', response.token);
 			return true;
@@ -56,6 +56,8 @@ const state = {
 	},
 	loadMyData() {
 		const token = sessionStorage.getItem('token');
+		console.log('paso');
+		
 		getMyInformation(token).then((info) => {
 			this.data.user = info;
 			getTheCurrentDataOfMyPets(token).then((petInfo) => {

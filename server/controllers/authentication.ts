@@ -17,7 +17,7 @@ function checkBody(body) {
 const generateToken = async (body) => {
 	const incompleteData = checkBody(body);
 	let findAuthUser;
-
+	
 	if (incompleteData) {
 		throw 'Error: faltan datos';
 	} else {
@@ -31,10 +31,8 @@ const generateToken = async (body) => {
 		});
 	}
 	if (findAuthUser) {
-		const token = jwt.sign(
-			{ id: findAuthUser.get('userId') },
-			SECRET_KEY_TOKEN
-		);
+		const token = jwt.sign({ id: findAuthUser.get('userId') },
+		SECRET_KEY_TOKEN)		
 		return { token };
 	} else {
 		throw 'Error: Datos incorrectos';

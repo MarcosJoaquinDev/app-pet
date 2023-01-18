@@ -34,6 +34,7 @@ export function initSignUpAuth() {
 						email: state.data.user.email,
 						password: psw,
 					};
+					
 					await state.initAuth(authData);
 					const loadToken = await state.loadMyToken(
 						authData.email,

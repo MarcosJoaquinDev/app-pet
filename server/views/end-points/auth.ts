@@ -12,7 +12,7 @@ endPointAuth.post('/auth', async (req, res) => {
 		const initialUserData = req.body;
 		const response = await enterDataForAuthorization(initialUserData);
 		res.json(response);
-	} catch (err) {
+	} catch (err) {	
 		res.json(err);
 	}
 });

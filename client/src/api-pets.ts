@@ -1,5 +1,6 @@
+const PORT = 'http://localhost:3000';
 const sendInitialDataForRegistration = async (email: string) => {
-	const response = await fetch('/auth-email', {
+	const response = await fetch(PORT + '/auth-email', {
 		method: 'POST',
 		body: JSON.stringify({ email }),
 		headers: {
@@ -15,7 +16,7 @@ const authorizationUpdate = async (
 	email,
 	password
 ) => {
-	const response = await fetch('/auth', {
+	const response = await fetch(PORT + '/auth', {
 		method: 'POST',
 		body: JSON.stringify({ name, last_name, user_name, email, password }),
 		headers: {
@@ -26,7 +27,7 @@ const authorizationUpdate = async (
 };
 const getToken = async (email: string, password: string) => {
 	try {
-		const response = await fetch('/auth/token', {
+		const response = await fetch(PORT + '/auth/token', {
 			method: 'POST',
 			body: JSON.stringify({ email, password }),
 			headers: {
@@ -34,6 +35,7 @@ const getToken = async (email: string, password: string) => {
 			},
 		});
 		const resJson = await response.json();
+		
 		return resJson;
 	} catch (err) {
 		return err;
@@ -41,7 +43,7 @@ const getToken = async (email: string, password: string) => {
 };
 const getMyInformation = async (token) => {
 	try {
-		const resp = await fetch('/me', {
+		const resp = await fetch(PORT + '/me', {
 			method: 'GET',
 			headers: { Authorization: `bearer ${token}` },
 		});
@@ -53,7 +55,7 @@ const getMyInformation = async (token) => {
 };
 const changeMyInformation = async (token, changes) => {
 	try {
-		const resp = await fetch('/me', {
+		const resp = await fetch(PORT + '/me', {
 			method: 'PUT',
 			body: JSON.stringify(changes),
 			headers: {
@@ -69,7 +71,7 @@ const changeMyInformation = async (token, changes) => {
 };
 const chengesMyPassword = async (token: string, newpass) => {
 	try {
-		const resp = await fetch('/me/password', {
+		const resp = await fetch(PORT + '/me/password', {
 			method: 'PUT',
 			body: JSON.stringify(newpass),
 			headers: {
@@ -85,7 +87,7 @@ const chengesMyPassword = async (token: string, newpass) => {
 };
 const getTheCurrentDataOfMyPets = async (token) => {
 	try {
-		const resp = await fetch('/me/pets', {
+		const resp = await fetch(PORT + '/me/pets', {
 			method: 'GET',
 			headers: { Authorization: `bearer ${token}` },
 		});
@@ -99,7 +101,7 @@ const pushPetInDataBase = async (token: string, data) => {
 	const { name, type, race, url_picture, description, location, lat, lng } =
 		data;
 	try {
-		const resp = await fetch('/me/pet', {
+		const resp = await fetch(PORT + '/me/pet', {
 			method: 'POST',
 			body: JSON.stringify({
 				name,
@@ -123,7 +125,7 @@ const pushPetInDataBase = async (token: string, data) => {
 	}
 };
 const updateChangesPet = async (infoPet, petId: number, token: string) => {
-	const response = await fetch(`/me/pet/${petId}`, {
+	const response = await fetch(PORT + `/me/pet/${petId}`, {
 		method: 'PUT',
 		body: JSON.stringify(infoPet),
 		headers: {
@@ -134,7 +136,7 @@ const updateChangesPet = async (infoPet, petId: number, token: string) => {
 	return response;
 };
 const deleteAPetInTheDataBase = async (petId: number, token: string) => {
-	const response = await fetch(`/me/pet/${petId}`, {
+	const response = await fetch(PORT + `/me/pet/${petId}`, {
 		method: 'DELETE',
 		headers: {
 			Authorization: `bearer ${token}`,
@@ -145,7 +147,7 @@ const deleteAPetInTheDataBase = async (petId: number, token: string) => {
 };
 const getAllPetsNearMe = async (lat, lng) => {
 	try {
-		const resp = await fetch(`/pets?lat=${lat}&lng=${lng}`, {
+		const resp = await fetch(PORT + `/pets?lat=${lat}&lng=${lng}`, {
 			method: 'GET',
 		});
 		const pets = await resp.json();
@@ -161,7 +163,7 @@ const sendInformationToOwner = async (
 	description: string
 ) => {
 	try {
-		const response = await fetch('/send-mail', {
+		const response = await fetch(PORT + '/send-mail', {
 			method: 'POST',
 			body: JSON.stringify({ idPet, name, phone, description }),
 			headers: {

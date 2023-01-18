@@ -1,4 +1,7 @@
 import { Sequelize } from 'sequelize';
+
+const sequelize = new Sequelize('postgres://dwfjacdn:WH4x6YQEShRiPmLcAKjXpadhsc0csVPR@motty.db.elephantsql.com/dwfjacdn')
+/*
 const sequelize = new Sequelize({
 	dialect: 'postgres',
 	username: process.env.SEQUELIZE_USER_NAME,
@@ -15,4 +18,5 @@ const sequelize = new Sequelize({
 		},
 	},
 });
+*/
 export { sequelize };
